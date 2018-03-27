@@ -34,21 +34,13 @@ get '/visit' do
 end
 
 post '/visit' do
-	# hash
-	hh = {:username => 'Enter name',
-			:user_phone => 'Enter phone',
-			:user_date => 'Enter date'
-		}
-	
-	@error = hh.select {|key,_| params[key] == ""}.values.join(", ")
-
-	if @error != ""
+	cl = Client.new params[:client]
+	if cl.save	
+		@info = "#{cl.name} Greetings!!! Registration succesfull!"
 		return erb :visit
 	else
-		cl = Client.new params[:client]
-		cl.save	
-		@info = "#{cl.name} Greetings!!! Registration succesfull!"
-		return erb :visit		
+		@error = "ERROR!"
+		return erb :visit			
 	end		
 end	
 
