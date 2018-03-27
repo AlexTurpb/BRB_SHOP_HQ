@@ -40,8 +40,12 @@ post '/visit' do
 	
 	@error = hh.select {|key,_| params[key] == ""}.values.join(", ")
 
-		if @error != ""
-			return erb :visit
-		else
+	if @error != ""
+		return erb :visit
+	else
+		cl = Client.new(:name => @username, :phone => @user_phone, :datestamp => @user_date, :barber => @prefered_barber, :color => @color)	
+		@info = "#{cl.name} Greetings!!! Registration succesfull!"
+		cl.save
+		return erb :visit		
 	end		
 end	
