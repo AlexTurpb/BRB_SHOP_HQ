@@ -20,20 +20,20 @@ $(function(){
 <form action="/visit" method="POST">
   <div class="form-group">
     <label for="exampleInputEmail1">Your name:</label>
-    <input name="username" type="text" class="form-control" value="<%=@username%>" placeholder="Enter your name">
+    <input name="client[name]" type="text" class="form-control" value="" placeholder="Enter your name">
   </div>
   <div class="form-group">
     <label for="exampleInputEmail1">Your phone:</label>
-    <input name="user_phone" type="text" class="form-control" value="<%=@user_phone%>" placeholder="Enter your phone">
+    <input name="client[phone]" type="text" class="form-control" value="" placeholder="Enter your phone">
   </div>
   <div class="form-group">
     <label for="exampleInputEmail1">Date and Time:</label>
-    <input id="datetimepicker" name="user_date" type="text" class="form-control" value="<%=@user_date%>" placeholder="Enter Date & Time">
+    <input id="datetimepicker" name="client[datestamp]" type="text" class="form-control" value="" placeholder="Enter Date & Time">
   </div>
 
   <div class="form-group">
   	<p> Select barber: </p>
-	<select name="prefered_barber" class="form-control">
+	<select name="client[barber]" class="form-control">
     <%@barbers.each do |row|%>
 	  <option <%= @prefered_barber == row['name'] ? 'selected' : '' %>><%= row['name'] %></option>
     <%end%>
@@ -42,7 +42,7 @@ $(function(){
 
   <div class="form-group">
     <label for="exampleInputEmail1">Paint color:</label>
-      <select id="color" name="color">
+      <select id="color" name="client[color]">
         <option value="#7bd148">Green</option>
         <option value="#5484ed">Bold blue</option>
         <option value="#a4bdfc">Blue</option>
