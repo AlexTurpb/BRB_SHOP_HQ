@@ -22,6 +22,7 @@ end
 
 before do
 	@barbers = Barber.all
+
 end
 
 
@@ -30,16 +31,17 @@ get '/' do
 end
 
 get '/visit' do
+	@cl = Client.new
 	erb :visit
 end
 
 post '/visit' do
-	cl = Client.new params[:client]
-	if cl.save	
-		@info = "#{cl.name} Greetings!!! Registration succesfull!"
+	@cl = Client.new params[:client]
+	if @cl.save	
+		@info = "#{@cl.name} Greetings!!! Registration succesfull!"
 		return erb :visit
 	else
-		@error = cl.errors.full_messages.first
+		@error = @cl.errors.full_messages.first
 		return erb :visit			
 	end		
 end	

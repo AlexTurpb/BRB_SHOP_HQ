@@ -20,15 +20,15 @@ $(function(){
 <form action="/visit" method="POST">
   <div class="form-group">
     <label for="exampleInputEmail1">Your name:</label>
-    <input name="client[name]" type="text" class="form-control" value="" placeholder="Enter your name">
+    <input name="client[name]" type="text" class="form-control" value="<%=@cl.name%>" placeholder="Enter your name">
   </div>
   <div class="form-group">
     <label for="exampleInputEmail1">Your phone:</label>
-    <input name="client[phone]" type="text" class="form-control" value="" placeholder="Enter your phone">
+    <input name="client[phone]" type="text" class="form-control" value="<%=@cl.phone%>" placeholder="Enter your phone">
   </div>
   <div class="form-group">
     <label for="exampleInputEmail1">Date and Time:</label>
-    <input id="datetimepicker" name="client[datestamp]" type="text" class="form-control" value="" placeholder="Enter Date & Time">
+    <input id="datetimepicker" name="client[datestamp]" type="text" class="form-control" value="<%=@cl.datestamp%>" placeholder="Enter Date & Time">
   </div>
 
   <div class="form-group">
