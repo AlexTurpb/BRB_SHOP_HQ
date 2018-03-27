@@ -56,3 +56,14 @@ end
 get '/contacts' do
 	erb :contacts			
 end
+
+post '/contacts' do
+	con = Contact.new do |to_db|
+			to_db.name = params[:user].capitalize
+			to_db.mail = params[:user_mail]
+			to_db.post = params[:post]
+		end
+	@info = "#{con.name} Subscribed"
+	con.save
+	erb :contacts			
+end
