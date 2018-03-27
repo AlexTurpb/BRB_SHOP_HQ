@@ -39,7 +39,7 @@ post '/visit' do
 		@info = "#{cl.name} Greetings!!! Registration succesfull!"
 		return erb :visit
 	else
-		@error = "ERROR!"
+		@error = cl.errors.full_messages.first
 		return erb :visit			
 	end		
 end	
