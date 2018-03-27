@@ -43,7 +43,13 @@ post '/visit' do
 	if @error != ""
 		return erb :visit
 	else
-		cl = Client.new(:name => @username, :phone => @user_phone, :datestamp => @user_date, :barber => @prefered_barber, :color => @color)	
+		cl = Client.new do |to_db|
+			to_db.name = params[:username].capitalize
+			to_db.phone = params[:user_phone]
+			to_db.datestamp = params[:user_date]
+			to_db.barber = params[:prefered_barber]
+			to_db.color = params[:color]
+		end
 		@info = "#{cl.name} Greetings!!! Registration succesfull!"
 		cl.save
 		return erb :visit		
