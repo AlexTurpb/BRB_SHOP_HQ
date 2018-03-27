@@ -49,3 +49,7 @@ post '/visit' do
 		return erb :visit		
 	end		
 end	
+
+get '/contacts' do
+	erb :contacts			
+end
