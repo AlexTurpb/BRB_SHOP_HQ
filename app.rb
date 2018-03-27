@@ -26,12 +26,6 @@ get '/visit' do
 end
 
 post '/visit' do
-	@username = params[:username].capitalize
-	@user_phone = params[:user_phone]
-	@user_date = params[:user_date]
-	@prefered_barber = params[:prefered_barber]
-	@color = params[:color]
-
 	# hash
 	hh = {:username => 'Enter name',
 			:user_phone => 'Enter phone',
