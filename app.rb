@@ -69,3 +69,8 @@ get '/registered' do
 	@clients = Client.order('created_at DESC')
 	erb :registered
 end
+
+get '/client/:id' do
+	@clients = Client.find(params[:id])
+	erb :cleint
+end
