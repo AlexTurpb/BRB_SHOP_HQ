@@ -1,3 +1,28 @@
 <div class="pricing-header px-3 py-3 pt-md-5 pb-md-4 mx-auto text-center">
   <h2 class="display-4"><strong>Registered Clients</strong></h2>
 </div>
+
+<div class="container">	
+	<table class="table table-striped">
+		<thead>
+			<tr>
+				<th>No.</th>
+				<th>Name</th>
+				<th>Phone number</th>
+				<th>Registered on</th>
+				<th>Barber</th>
+				<th>Color</th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr><%@clients.each do |row|%>
+				<td><%= row['id'] %></td>
+				<td><%= row['name'] %></td>
+				<td><%= row['phone'] %></td>
+				<td><%= row['datestamp'] %></td>
+				<td><%= row['barber'] %></td>
+				<td style="background-color: <%= row['color'] %>"><%= row['color'] %></td>
+			</tr><%end%>
+		</tbody>	
+	</table>
+</div>

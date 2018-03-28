@@ -66,5 +66,6 @@ get '/barber/:id' do
 end
 
 get '/registered' do
+	@clients = Client.order('created_at DESC')
 	erb :registered
 end
