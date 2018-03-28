@@ -22,7 +22,6 @@ end
 
 before do
 	@barbers = Barber.all
-
 end
 
 
@@ -59,4 +58,8 @@ post '/contacts' do
 	@info = "#{con.name} Subscribed"
 	con.save
 	erb :contacts			
+end
+
+get '/barber/:id' do
+	erb :barber			
 end
