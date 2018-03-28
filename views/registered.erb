@@ -16,12 +16,12 @@
 		</thead>
 		<tbody>
 			<tr><%@clients.each do |row|%>
-				<td><%= row['id'] %></td>
-				<td><a href="/client/<%= row['id'] %>"><%= row['name'] %></a></td>
-				<td><%= row['phone'] %></td>
-				<td><%= row['datestamp'] %></td>
-				<td><%= row['barber'] %></td>
-				<td style="background-color: <%= row['color'] %>"><%= row['color'] %></td>
+				<td><%= row.id %></td>
+				<td><a href="/client/<%= row.id %>"><%= row.name %></a></td>
+				<td><%= row.phone %></td>
+				<td><%= row.datestamp %></td>
+				<td><%= row.barber %></td>
+				<td style="background-color: <%= row.color %>"><%= row.color %></td>
 			</tr><%end%>
 		</tbody>	
 	</table>

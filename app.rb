@@ -65,12 +65,13 @@ get '/barber/:id' do
 	erb :barber			
 end
 
+get '/client/:id' do
+	@client = Client.find(params[:id])
+	erb :client
+end
+
 get '/registered' do
 	@clients = Client.order('created_at DESC')
 	erb :registered
 end
 
-get '/client/:id' do
-	@clients = Client.find(params[:id])
-	erb :cleint
-end
