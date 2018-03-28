@@ -18,9 +18,9 @@ class Barber < ActiveRecord::Base
 end
 
 class Contact < ActiveRecord::Base
-	validates :user, presence: true, length: { in: 4..20 }
-	validates :user_mail, presence: true, with: /@/
-	validates :post
+	validates :name, presence: true, length: { in: 4..20 }
+	validates :mail, presence: true
+	validates :post, presence: true, length: { minimum: 10 }
 end
 
 before do
@@ -41,29 +41,26 @@ post '/visit' do
 	@cl = Client.new params[:client]
 	if @cl.save	
 		@info = "#{@cl.name} Greetings!!! Registration succesfull!"
-		return erb :visit
+		erb :visit
 	else
 		@error = @cl.errors.full_messages.first
-		return erb :visit			
+		erb :visit			
 	end		
 end	
 
 get '/contacts' do
+	@con = Contact.new
 	erb :contacts			
 end
 
 post '/contacts' do
-	@con = Contact.new do |to_db|
-			to_db.name = params[:user].capitalize
-			to_db.mail = params[:user_mail]
-			to_db.post = params[:post]
-			if con.save
-			@info = "#{@con.name} Subscribed"
-			erb :contacts
-			else
-			@error = @con.errors.full_messages.first
-			erb :contacts
-		end
+	@con = Contact.new params[:contact]
+	if @con.save
+		@info = "#{@con.name} Subscribed"
+		erb :contacts
+	else
+		@error = @con.errors.full_messages.first
+		erb :contacts
 	end			
 end
 
