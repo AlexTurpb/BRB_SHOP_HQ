@@ -18,6 +18,9 @@ class Barber < ActiveRecord::Base
 end
 
 class Contact < ActiveRecord::Base
+	validates :user, presence: true, length: { in: 4..20 }
+	validates :user_mail, presence: true, with: /@/
+	validates :post
 end
 
 before do
@@ -50,14 +53,18 @@ get '/contacts' do
 end
 
 post '/contacts' do
-	con = Contact.new do |to_db|
+	@con = Contact.new do |to_db|
 			to_db.name = params[:user].capitalize
 			to_db.mail = params[:user_mail]
 			to_db.post = params[:post]
+			if con.save
+			@info = "#{@con.name} Subscribed"
+			erb :contacts
+			else
+			@error = @con.errors.full_messages.first
+			erb :contacts
 		end
-	@info = "#{con.name} Subscribed"
-	con.save
-	erb :contacts			
+	end			
 end
 
 get '/barber/:id' do
